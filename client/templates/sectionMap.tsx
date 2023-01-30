@@ -15,7 +15,7 @@ const sectionMap = (Section: React.FC<SectionProps>): Record<string, JSX.Element
   work: <Section key="work" path="sections.work" titlePath="name" subtitlePath="position" />,
   
  });
-
+console.log(sectionMap)
 export const getSectionById = (id: string, Section: React.FC<SectionProps>): JSX.Element => {
   // Check if section id is a custom section (an uuid)
   if (validate(id)) {
@@ -28,7 +28,7 @@ export const getSectionById = (id: string, Section: React.FC<SectionProps>): JSX
   if (predefinedSection) {
     return predefinedSection;
   }
-
+  console.log(`sections.${id}`)
   // Other ways section should be a cloned section
   const section = find(sectionMap(Section), (element, key) => id.includes(key));
   return React.cloneElement(section!, { path: `sections.${id}` });
